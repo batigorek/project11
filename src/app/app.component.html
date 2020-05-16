@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row mb-3">
+    <button class='add' (click)='AddSensor()'>Add sensor</button>
+    <div class="col-3" *ngFor="let item of sensors">
+      <div class="card" [hidden]="!item.visibly">
+        <ng-container *ngIf="item.color===true; else elseTemplate">
+          <div class="card-body" style="background-color: green;">
+            <h3 class="class-title">{{item.name}}</h3>
+            <button class='delete'(click)='item.visibly = false'>Delete</button>
+          </div>
+        </ng-container>
+        <ng-template #elseTemplate>
+          <div class="card-body" style="background-color: red;">
+            <h3 class="class-title">{{item.name}}</h3>
+            <button class='delete' (click)='item.visibly = false'>Delete</button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
